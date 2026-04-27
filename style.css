@@ -104,6 +104,7 @@
       line-height: 1.75;
       font-style: italic;
     }
+    .hero-tagline#error-msg{margin:20px;}
 
     /* scroll hint */
     .scroll-hint {
@@ -203,7 +204,7 @@
       letter-spacing: 0.02em;
       outline: none;
       transition: border-color 0.25s, background 0.25s;
-      -webkit-appearance: none;
+      
     }
 
     .input-group input::placeholder { color: rgba(168, 184, 204, 0.4); }

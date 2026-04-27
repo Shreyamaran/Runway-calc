@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Runway Calculator</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=TeX+Gyre+Pagella&display=swap" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+
   
 </head>
 <body>
@@ -56,9 +58,56 @@
       />
     </div>
 
-    <button class="calc-btn">Calculate</button>
+    <button class="calc-btn" onclick="calculate()">Calculate</button>
+    <div class="hero-tagline" id="error-msg"></div>
+
 
   </section>
+ <script>
+    function calculate() {
+      const cashEl  = document.getElementById('cash');
+      const burnEl  = document.getElementById('burn');
+      const errorEl = document.getElementById('error-msg');
 
+      const cash = parseFloat(cashEl.value);
+      const burn = parseFloat(burnEl.value);
+
+      errorEl.textContent = '';
+
+      // validation
+      if (!cashEl.value || !burnEl.value) {
+        errorEl.textContent = 'Please fill in both fields.';
+        return;
+      }
+      if (isNaN(cash) || cash < 0) {
+        errorEl.textContent = 'Cash on hand must be a positive number.';
+        return;
+      }
+      if (isNaN(burn) || burn <= 0) {
+        errorEl.textContent = 'Monthly expenditure must be greater than zero.';
+        return;
+      }
+
+      // core formula: Runway (Months) = Total Cash / Monthly Burn
+      const months = Math.floor(cash / burn);
+
+      // build query string so result pages can read the numbers
+      const params = `?months=${months}&cash=${cash}&burn=${burn}`;
+
+      // route to the correct result page based on thresholds
+      if (months >= 6) {
+        window.location.href = 'results/safe.html' + params;
+      } else if (months >= 3) {
+        window.location.href = 'results/borderline.html' + params;
+      } else {
+        window.location.href = 'results/danger.html' + params;
+      }
+    }
+
+    // Enter key triggers calculation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') calculate();
+    });
+  </script>
 </body>
 </html>
