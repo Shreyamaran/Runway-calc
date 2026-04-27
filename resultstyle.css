@@ -1,0 +1,236 @@
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100%;
+    }
+
+    body { height: 100%; font-family: 'Cormorant Garamond', serif; }
+
+    /* ── shared screen ── */
+    .screen {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* aura blobs — each screen overrides colours */
+    .aura {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* ── YOU'RE label ── */
+    .youre {
+      font-family: 'TeX Gyre Pagella', Palatino, serif;
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      font-style: italic;
+      letter-spacing: 0.04em;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0.1rem;
+    }
+
+    /* ── big state word ── */
+    .state-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(5rem, 22vw, 8rem);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 2.2rem;
+    }
+
+    /* ── body copy ── */
+    .body-copy {
+      font-family: 'TeX Gyre Pagella', Palatino, serif;
+      font-size: clamp(0.85rem, 3vw, 1rem);
+      font-style: italic;
+      line-height: 1.65;
+      max-width: 260px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.6rem;
+    }
+
+    /* ── number card ── */
+    .number-card {
+      width: 140px;
+      height: 140px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.4rem;
+    }
+
+    .number-card span {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 6rem;
+      line-height: 1;
+    }
+
+    /* ── months label ── */
+    .months-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.8rem, 10vw, 4rem);
+      letter-spacing: 0.02em;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      animation: nudge 2.4s ease-in-out infinite;
+      z-index: 2;
+    }
+    .scroll-hint span {
+      font-family: 'TeX Gyre Pagella', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .scroll-line { width: 1px; height: 26px; }
+    @keyframes nudge {
+      0%,100% { transform: translateX(-50%) translateY(0);   opacity: 0.5; }
+      50%      { transform: translateX(-50%) translateY(6px); opacity: 1;   }
+    }
+
+    /* ════════════════════════════
+       SAFE — green
+    ════════════════════════════ */
+    .screen-safe {
+      background: #c8dfc0;
+    }
+
+    .screen-safe .aura-a {
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(180,220,160,0.9) 0%, rgba(140,195,120,0.4) 40%, transparent 70%);
+      top: -180px; left: -140px;
+    }
+    .screen-safe .aura-b {
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(100,170,90,0.45) 0%, transparent 65%);
+      bottom: -120px; right: -100px;
+    }
+    .screen-safe .aura-c {
+      width: 500px; height: 260px;
+      background: radial-gradient(ellipse, rgba(200,235,190,0.5) 0%, transparent 65%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+    }
+
+    .screen-safe .youre       { color: #2d5a27; }
+    .screen-safe .state-word  { color: #2d5a27; }
+    .screen-safe .body-copy   { color: #3a6b33; }
+    .screen-safe .months-label { color: #2d5a27; }
+
+    .screen-safe .number-card {
+      background: rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.35);
+      backdrop-filter: blur(4px);
+    }
+    .screen-safe .number-card span { color: #2d5a27; }
+
+    .screen-safe .scroll-hint span { color: rgba(45,90,39,0.5); }
+    .screen-safe .scroll-line { background: linear-gradient(to bottom, transparent, rgba(45,90,39,0.4)); }
+
+    /* ════════════════════════════
+       FINE — amber/gold
+    ════════════════════════════ */
+    .screen-fine {
+      background: #e8c97a;
+    }
+
+    .screen-fine .aura-a {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,220,100,0.95) 0%, rgba(230,185,60,0.5) 40%, transparent 70%);
+      top: -200px; left: -150px;
+    }
+    .screen-fine .aura-b {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(210,155,30,0.5) 0%, transparent 65%);
+      bottom: -130px; right: -110px;
+    }
+    .screen-fine .aura-c {
+      width: 520px; height: 280px;
+      background: radial-gradient(ellipse, rgba(255,235,140,0.55) 0%, transparent 65%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+    }
+
+    .screen-fine .youre        { color: #6b4a00; }
+    .screen-fine .state-word   { color: #7a5200; }
+    .screen-fine .body-copy    { color: #7a5200; }
+    .screen-fine .months-label { color: #7a5200; }
+
+    .screen-fine .number-card {
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(4px);
+    }
+    .screen-fine .number-card span { color: #7a5200; }
+
+    .screen-fine .scroll-hint span { color: rgba(100,70,0,0.5); }
+    .screen-fine .scroll-line { background: linear-gradient(to bottom, transparent, rgba(100,70,0,0.4)); }
+
+    /* ════════════════════════════
+       DANGER — red
+    ════════════════════════════ */
+    .screen-danger {
+      background: #8b2020;
+    }
+
+    .screen-danger .aura-a {
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(160,40,40,0.9) 0%, rgba(120,20,20,0.45) 40%, transparent 70%);
+      top: -180px; left: -140px;
+    }
+    .screen-danger .aura-b {
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(100,15,15,0.5) 0%, transparent 65%);
+      bottom: -120px; right: -100px;
+    }
+    .screen-danger .aura-c {
+      width: 500px; height: 260px;
+      background: radial-gradient(ellipse, rgba(180,50,50,0.35) 0%, transparent 65%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+    }
+
+    .screen-danger .youre        { color: #f5caca; }
+    .screen-danger .state-word   { color: #ff6b6b; }
+    .screen-danger .body-copy    { color: #f0c0c0; }
+    .screen-danger .months-label { color: #f5caca; }
+
+    .screen-danger .number-card {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+    }
+    .screen-danger .number-card span { color: #f5caca; }
+
+    .screen-danger .scroll-hint span { color: rgba(245,200,200,0.4); }
+    .screen-danger .scroll-line { background: linear-gradient(to bottom, transparent, rgba(245,200,200,0.35)); }
+  
