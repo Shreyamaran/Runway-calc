@@ -8,7 +8,26 @@
  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=TeX+Gyre+Pagella&display=swap" rel="stylesheet" />
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+@font-face {
+  font-family: 'MyFont';
+  src: url('/Runway-calc/results/BrightMarching-Regular.otf') format('opentype');
+}
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  margin-top: 40vh;
+}
 body {
   min-height: 100vh;
   font-family: 'Cormorant Garamond', serif;
@@ -24,7 +43,7 @@ body {
 }
 
 /* top section */
-.state-word { font-size: 5rem; color: #ff6b6b;
+.state-word { font-size: 5rem; color: #ff6b6b; font-family:"MyFont";
       font-style: italic; font-weight: 300;
  }
 .youre { font-style: italic; }
@@ -88,6 +107,9 @@ body {
 </head>
 
 <body>
+<video autoplay muted loop id="bg-video">
+    <source src="/Runway-calc/red.mp4" type="video/mp4">
+  </video>
 
 <div class="youre">You're in</div>
 <div class="state-word">Danger</div>

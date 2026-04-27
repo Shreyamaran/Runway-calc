@@ -5,12 +5,36 @@
       overflow-y: scroll;
       height: 100%;
     }
+@font-face {
+  font-family: 'The-Darling';
+  src: url('font/AngelicWar.otf') format('opentype');}
+  @font-face {
+  font-family: 'font2';
+  src: url('font/The-Darling.otf') format('opentype');
+}
 
     body {
-      background: #081525;
-      color: #e8e4dc;
+      background: transparent;
+      color: transparent;
       height: 100%;
     }
+    #bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  margin-top: 40vh;
+}
 
     /* ── shared ── */
     .screen {
@@ -29,7 +53,7 @@
        SCREEN 1 — Hero
     ══════════════════════════════ */
 
-    .screen-hero { background: #081525; }
+    .screen-hero { background: transparent; }
 
     /* large radial aura — top-left bleed */
     .aura-1 {
@@ -76,8 +100,7 @@
 
     /* TAN Pearl substitute — Cormorant Garamond italic, high contrast */
     .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
+      font-family: 'The-Darling';
       font-weight: 300;
       font-size: clamp(4.5rem, 18vw, 7rem);
       line-height: 0.92;
@@ -100,7 +123,7 @@
       font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, serif;
       font-size: clamp(0.85rem, 3vw, 1rem);
       font-weight: 400;
-      color: #7a8fa8;
+      color: #c5cdd8;
       line-height: 1.75;
       font-style: italic;
     }
@@ -124,7 +147,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(168, 184, 204, 0.35);
+      color: rgba(197, 202, 209, 0.35);
     }
 
     .scroll-line {
@@ -142,7 +165,7 @@
        SCREEN 2 — Calculator
     ══════════════════════════════ */
 
-    .screen-calc { background: #0a1a2e; }
+    .screen-calc { background: transparent; }
 
     /* aura top-right */
     .aura-c1 {
@@ -162,7 +185,7 @@
       width: 350px;
       height: 350px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(25, 60, 120, 0.35) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(1, 8, 19, 0.35) 0%, transparent 65%);
       bottom: -100px;
       left: -120px;
       pointer-events: none;
@@ -176,7 +199,7 @@
     }
 
     .calc-header p {
-      font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, serif;
+      font-family: 'Modern World', 'Palatino Linotype', Palatino, serif;
       font-size: clamp(1rem, 3.5vw, 1.15rem);
       font-style: italic;
       color: #a8b8cc;
@@ -207,10 +230,10 @@
       
     }
 
-    .input-group input::placeholder { color: rgba(168, 184, 204, 0.4); }
+    .input-group input::placeholder { color: rgb(211, 211, 211); }
     .input-group input:focus {
       border-color: rgba(168, 184, 204, 0.6);
-      background: rgba(255,255,255,0.05);
+      background: rgba(117, 113, 113, 0.05);
     }
 
     /* button */
@@ -219,10 +242,10 @@
       max-width: 340px;
       margin-top: 0.5rem;
       padding: 1rem;
-      background: #f0ece3;
+      background: light;
       border: none;
       border-radius: 50px;
-      font-family: 'TeX Gyre Pagella', Palatino, serif;
+      font-family: '', Palatino, serif;
       font-size: 0.9rem;
       letter-spacing: 0.06em;
       color: #0a1a2e;

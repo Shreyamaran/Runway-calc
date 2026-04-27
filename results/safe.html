@@ -9,7 +9,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html { scroll-snap-type: y mandatory; overflow-y: scroll; height: 100%; }
-    body { background: #c8dfc0; height: 100%; }
+    body { background: transparent; height: 100%; }
 
     .screen {
       min-height: 100vh;
@@ -43,17 +43,21 @@
       font-size: 1.1rem; font-style: italic;
       color: #2d5a27; position: relative; z-index: 1;
     }
+    @font-face {
+  font-family: 'MyFont';
+  src: url('/Runway-calc/results/BrightMarching-Regular.otf') format('opentype');
+}
     .state-word {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'MyFont', serif;
       font-style: italic; font-weight: 300;
       font-size: clamp(5rem, 20vw, 7.5rem);
-      line-height: 0.9; color: #2d5a27;
+      line-height: 0.9; color: #a7dba0;
       position: relative; z-index: 1; margin-bottom: 1.4rem;
     }
     .body-copy {
       font-family: 'TeX Gyre Pagella', Palatino, serif;
       font-size: 0.92rem; font-style: italic;
-      color: #3a6b33; line-height: 1.65;
+      color: #a6d0a1; line-height: 1.65;
       max-width: 250px; position: relative; z-index: 1; margin-bottom: 1.2rem;
     }
     .number-card {
@@ -73,7 +77,23 @@
       font-weight: 300; font-size: clamp(2.5rem, 9vw, 3.5rem);
       color: #2d5a27; position: relative; z-index: 1; margin-bottom: 2rem;
     }
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
 
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  margin-top: 40vh;
+}
     /* chart card */
     .chart-card {
       width: 100%; max-width: 340px;
@@ -111,6 +131,9 @@
   </style>
 </head>
 <body>
+    <video autoplay muted loop id="bg-video">
+    <source src="../green.mp4" type="video/mp4">
+  </video>
 <section class="screen">
   <div class="aura aura-1"></div>
   <div class="aura aura-2"></div>
