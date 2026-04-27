@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runway Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=TeX+Gyre+Pagella&display=swap" rel="stylesheet" />
+  
+</head>
+<body>
+
+  <!-- ── SCREEN 1 : Hero ── -->
+  <section class="screen screen-hero">
+    <div class="aura-1"></div>
+    <div class="aura-2"></div>
+    <div class="aura-center"></div>
+
+    <div class="hero-content">
+      <div class="hero-title">Runway</div>
+      <div class="hero-subtitle">Calculator</div>
+      <div class="hero-tagline">
+        How far does your current<br>capital take you?
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── SCREEN 2 : Calculator ── -->
+  <section class="screen screen-calc">
+    <div class="aura-c1"></div>
+    <div class="aura-c2"></div>
+
+    <div class="calc-header">
+      <p>We handle the runway.<br>You handle the business.</p>
+    </div>
+
+    <div class="input-group">
+      <input
+        type="number"
+        id="cash"
+        placeholder="Enter your total cash on hand"
+        min="0"
+      />
+    </div>
+
+    <div class="input-group">
+      <input
+        type="number"
+        id="burn"
+        placeholder="Enter your monthly expenditure"
+        min="0"
+      />
+    </div>
+
+    <button class="calc-btn">Calculate</button>
+
+  </section>
+
+</body>
+</html>

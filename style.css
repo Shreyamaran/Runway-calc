@@ -1,0 +1,235 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100%;
+    }
+
+    body {
+      background: #081525;
+      color: #e8e4dc;
+      height: 100%;
+    }
+
+    /* ── shared ── */
+    .screen {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ══════════════════════════════
+       SCREEN 1 — Hero
+    ══════════════════════════════ */
+
+    .screen-hero { background: #081525; }
+
+    /* large radial aura — top-left bleed */
+    .aura-1 {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 100, 160, 0.55) 0%, rgba(20, 50, 100, 0.25) 45%, transparent 70%);
+      top: -140px;
+      left: -160px;
+      pointer-events: none;
+    }
+
+    /* smaller accent aura — bottom-right */
+    .aura-2 {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30, 70, 130, 0.4) 0%, transparent 65%);
+      bottom: -100px;
+      right: -120px;
+      pointer-events: none;
+    }
+
+    /* faint centre glow behind the title */
+    .aura-center {
+      position: absolute;
+      width: 600px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(60, 110, 180, 0.18) 0%, transparent 65%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* TAN Pearl substitute — Cormorant Garamond italic, high contrast */
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(4.5rem, 18vw, 7rem);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      color: #f0ece3;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Tex Gyre substitute — TeX Gyre Pagella */
+    .hero-subtitle {
+      font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, serif;
+      font-weight: 400;
+      font-size: clamp(1rem, 4vw, 1.35rem);
+      letter-spacing: 0.12em;
+      color: #a8b8cc;
+      margin-bottom: 3.2rem;
+    }
+
+    .hero-tagline {
+      font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, serif;
+      font-size: clamp(0.85rem, 3vw, 1rem);
+      font-weight: 400;
+      color: #7a8fa8;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    /* scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: nudge 2.4s ease-in-out infinite;
+    }
+
+    .scroll-hint span {
+      font-family: 'TeX Gyre Pagella', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(168, 184, 204, 0.35);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 30px;
+      background: linear-gradient(to bottom, transparent, rgba(168,184,204,0.35));
+    }
+
+    @keyframes nudge {
+      0%, 100% { transform: translateX(-50%) translateY(0);   opacity: 0.7; }
+      50%       { transform: translateX(-50%) translateY(7px); opacity: 1;   }
+    }
+
+    /* ══════════════════════════════
+       SCREEN 2 — Calculator
+    ══════════════════════════════ */
+
+    .screen-calc { background: #0a1a2e; }
+
+    /* aura top-right */
+    .aura-c1 {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(50, 90, 155, 0.45) 0%, rgba(20, 50, 110, 0.2) 45%, transparent 68%);
+      top: -160px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    /* aura bottom-left */
+    .aura-c2 {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(25, 60, 120, 0.35) 0%, transparent 65%);
+      bottom: -100px;
+      left: -120px;
+      pointer-events: none;
+    }
+
+    .calc-header {
+      text-align: center;
+      margin-bottom: 2.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .calc-header p {
+      font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, serif;
+      font-size: clamp(1rem, 3.5vw, 1.15rem);
+      font-style: italic;
+      color: #a8b8cc;
+      line-height: 1.65;
+    }
+
+    /* inputs */
+    .input-group {
+      width: 100%;
+      max-width: 340px;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .input-group input {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(168, 184, 204, 0.25);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      font-family: 'TeX Gyre Pagella', Palatino, serif;
+      font-size: 0.9rem;
+      color: #e8e4dc;
+      letter-spacing: 0.02em;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+      -webkit-appearance: none;
+    }
+
+    .input-group input::placeholder { color: rgba(168, 184, 204, 0.4); }
+    .input-group input:focus {
+      border-color: rgba(168, 184, 204, 0.6);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* button */
+    .calc-btn {
+      width: 100%;
+      max-width: 340px;
+      margin-top: 0.5rem;
+      padding: 1rem;
+      background: #f0ece3;
+      border: none;
+      border-radius: 50px;
+      font-family: 'TeX Gyre Pagella', Palatino, serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      color: #0a1a2e;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      transition: background 0.2s, transform 0.12s;
+    }
+
+    .calc-btn:hover  { background: #ffffff; }
+    .calc-btn:active { transform: scale(0.97); }
